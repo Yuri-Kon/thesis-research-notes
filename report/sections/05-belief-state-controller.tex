@@ -31,7 +31,7 @@
 
 第一类相关工作是不确定性感知的agent规划。例如UoT\parencite{uot}提出在信息不足时让\texttt{language agent}根据不确定性主动进行信息搜索，这说明不确定性感知规划（uncertainty-aware planning）本身已经是被认可的研究方向，也证明“不确定性不是只能被动承受，而可以进入决策闭环”这一思路是成立的。与本课题相比，这类工作更多关注信息寻求与提问行为，而较少涉及高代价工作流中的阶段化恢复、人工介入和治理动作，因此为本研究提供的是方法论启发，而不是现成答案。
 
-第二类相关工作是成本感知路由与\texttt{text-time}资源控制。BEST-Route\parencite{best-route}将问题难度（query-difficulty）与质量阈值纳入模型路由和采样预算分配，EcoAct\parencite{ecoact}则从经济性角度讨论\texttt{agent}系统中何时注册何种动作或工具。它们共同说明，在大模型系统中，根据难度和成本动态分配计算资源已经成为清晰的研究问题。这与本课题高度相关，因为\texttt{Belief-State Controller}同样需要根据状态估计决定是否继续投入更多执行决策。但不同之处在于，这些工作通常停留在模型路由或工具使用层面，而本文所关注的，是工作流层面的恢复、人工确认和执行治理。
+第二类相关工作是成本感知路由与\texttt{test-time}资源控制。BEST-Route\parencite{best-route}将问题难度（query-difficulty）与质量阈值纳入模型路由和采样预算分配，EcoAct\parencite{ecoact}则从经济性角度讨论\texttt{agent}系统中何时注册何种动作或工具。它们共同说明，在大模型系统中，根据难度和成本动态分配计算资源已经成为清晰的研究问题。这与本课题高度相关，因为\texttt{Belief-State Controller}同样需要根据状态估计决定是否继续投入更多执行决策。但不同之处在于，这些工作通常停留在模型路由或工具使用层面，而本文所关注的，是工作流层面的恢复、人工确认和执行治理。
 
 第三类相关工作是长程价值引导与搜索控制。例如QLASS\parencite{qlass}通过逐步价值（stepwise value）引导agent在复杂任务中做更好的中间选择，Language Agent Tree Search\parencite{lats}则通过树搜索统一推理、行动与规划。这些工作表明，大模型agent的关键不只在于最终输出，更在于中间决策质量以及对未来收益的估计能力。对本课题而言，其重要意义在于说明：在长链路任务中，控制“下一步怎么走”本身就是研究重点。然而，这类任务仍更偏向搜索效率和推理路径优化，而不是面向高代价工作流的治理控制。
 
