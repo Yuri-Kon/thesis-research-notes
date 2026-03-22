@@ -17,7 +17,7 @@
 
 更重要的是，\texttt{Belief-State}的引入，使控制问题具备了一个更清晰的算法表达。系统不再只是简单地根据当前观测做局部反应，而是维护关于当前执行状态\texttt{belief}，并再次基础上决定治理动作。这些治理动作不是普通的工具选择，而是工作流层面的决策，例如是否继续执行、是否扩大探索深度、是否切换到保守路径、是否进入局部\texttt{patch}、是否升级为\texttt{suffix replan}、是否请求人工确认、以及是否提前终止。也就是说，\texttt{Belief-State Controller}的核心不在于替代\texttt{Planner}或\texttt{Executor}，而在于作为它们之上的运行时决策层，对工作流的推进方式进行统一治理。这一点与当前系统已经具备的\texttt{FSM}、\texttt{HITL}和恢复链机制高度契合，也意味着\texttt{Belief-State Controller}既能利用现有系统作为实验平台，又不会退化为现有模块的简单重复。
 
-\subsection{本文采用的Belief-State Controller}问题定义
+\subsection{本文采用的Belief-State Controller问题定义}
 
 在本课题中，\texttt{Belief-State Controller} 所面对的对象不是单轮对话，也不是单次模型推理，而是一条高代价科学工作流。该工作流可以被抽象为一个带有数据依赖与控制依赖的图结构，其中每个节点对应某一阶段的任务执行、质量判断、恢复操作或人工确认点。对于蛋白质设计场景而言，这样的图至少包含候选生成、结构预测、质量门控、结构条件优化以及恢复等关键部分。
 
