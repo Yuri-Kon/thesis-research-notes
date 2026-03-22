@@ -1,10 +1,42 @@
 \documentclass[12pt,a4paper]{ctexart}
 
+\input{preamble.tex}
+
 \setcounter{tocdepth}{2}
 
 \begin{document}
 \section{研究背景与目前系统现状}
 \subsection{研究背景}
+
+对于蛋白质设计这类高代价任务而言，系统真正面对的难点不只是”是否会调用工具“，而在于以下几个方面：
+
+\begin{itemize}
+	\item 任务链条长，且阶段之间存在强依赖关系；
+	\item 不同阶段的计算代价和失败后果高度不对称；
+	\item 运行过程中常常出现信息不充分、候选分歧、局部失败和恢复决策问题；
+	\item 何时继续自动执行、何时切换策略、何时请求人工介入，本身就是关键问题。
+\end{itemize}
+
+因此，如果将毕设继续定义为“蛋白质设计助手”，其研究重点很容易停留在“任务分解、工具调用、结果输出”这一层面，即便加入了风险门控等系统。如果希望体现更明确的计算机相关的专业特征的话，我觉得可以把问题进一步上升为“高代价科学工作流的执行控制与治理”。
+
+\subsection{当前系统现状}
+
+从现有的系统设计来看，它已经形成了一个较为稳定的多Agent工作流执行系统。
+
+首先，系统采用了显式有限状态机（FSM）作为运行核心，要求任务状态显式、状态转移合法且可记录，外部语义状态和内部执行状态均有明确定义。这意味着系统已经具备较好的执行一致性、可恢复性与可审计性基础。
+
+其次，系统在角色划分上已经形成了较为清晰的职责边界：PlannerAgent负责生成计划候选，ExecutorAgent负责工具执行和恢复流程，SafetyAgent负责评估，SummarizerAgent负责结果汇总。这种结构表明系统已经具备典型多Agent runtime的雏形。
+
+再次，系统已经围绕蛋白质设计任务构建了较为完整的阶段化流程，已经支持：
+\begin{itemize}
+	\item S1 序列候选生成
+	\item S2 结构投影
+	\item S3 质量门控
+	\item S4 基于结构条件的细化
+	\item 分层 patch/replan 恢复机制
+\end{itemize}
+
+此外，系统已经具备 HITL（Human-in-the-loop）机制和恢复链设计，包括 \texttt{WAITING\_*} 以及 $retry \to patch \to replan$ 的恢复顺序
 \section{当前选题面临的核心问题}
 \section{选题目标的重新定义}
 \section{候选方向比较}
