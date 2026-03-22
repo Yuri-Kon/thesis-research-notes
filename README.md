@@ -19,4 +19,4 @@ Entry points:
 
 - `references/annotated_references.md`
 - `references/seed_references.bib`
-- `notes/controller_direction_memo_zh.md`
+- `notes/controller_direction_memo.md`
