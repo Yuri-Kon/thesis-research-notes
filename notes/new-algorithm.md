@@ -98,35 +98,27 @@
 
 1. 步骤级搜索与价值引导
 
-   [QLASS][4], LATS 的启发是：\
+   [QLASS][4], [LATS][5]的启发是：\
    不能只看最终结果，要在中间步骤上评估长期价值。\
    这里对应的是：中间结构预测/QC结果出来后，重新评估当前链路是不是值得走。
 
-   https://openreview.net/forum?id=f6lio2CZIM
-
-   https://openreview.net/forum?id=njwv9BsGHF
-
 1. 不确定性感知决策
 
-   UoT：当信息不足时，要把不确定性纳入决策闭环。
+   [UoT][6]：当信息不足时，要把不确定性纳入决策闭环。
 
    这里对应的是轻量belief-state，用来估计风险、成功率和恢复空间。
 
-   https://arxiv.org/abs/2402.03271
-
 1. 多Agent失败分析与恢复治理
 
-   Why Do Multi-Agent LLM Systems Fail 和 Which Agent Causes Task Failures and When ：多agent的真正难点常常在失败模式、协作失配和归因，而不是单步工具调用。
+   [Why Do Multi-Agent LLM Systems Fail][7]和 [Which Agent Causes Task Failures and When][8]：多agent的真正难点常常在失败模式、协作失配和归因，而不是单步工具调用。
 
    这里对应的是：把patch/replan设计为算法的一部分，而不是事后补丁。
 
-   https://arxiv.org/abs/2503.13657
+另一个直接相关的思路是 [EcoAct][9]：强调工具使用要有经济性，不应无差别暴露所有工具。
 
-   https://openreview.net/forum?id=GazlTYxZss
+## 可以用的表述
 
-另一个直接相关的思路是 EcoAct：强调工具使用要有经济性，不应无差别暴露所有工具。
-
-https://arxiv.org/abs/2411.01643
+面向高代价蛋白质设计工作流的自适应工具链规划算法，是一种工作流级的规划方法。它不把问题简单视为工具检索，而是将蛋白质设计任务建模为一个带成本、风险和恢复约束的多阶段规划问题。算法首先生成若干可执行工具链候选，再基于目标匹配、可执行性、成本、风险和恢复复杂度进行排序；在执行过程中，算法利用中间观测更新对当前链路成功概率与后续代价的估计，并动态决定继续执行、局部patch或后缀replan，从而减少高代价无效调用并提升整体成功率。
 
 ## References
 
@@ -134,3 +126,8 @@ https://arxiv.org/abs/2411.01643
 [2]: https://arxiv.org/abs/2411.01643
 [3]: https://arxiv.org/abs/2411.01643
 [4]: https://openreview.net/forum?id=f6lio2CZIM
+[5]: https://openreview.net/forum?id=njwv9BsGHF
+[6]: https://arxiv.org/abs/2402.03271
+[7]: https://arxiv.org/abs/2503.13657
+[8]: https://openreview.net/forum?id=GazlTYxZss
+[9]: https://arxiv.org/abs/2411.01643
